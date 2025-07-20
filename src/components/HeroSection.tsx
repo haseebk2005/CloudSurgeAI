@@ -8,12 +8,8 @@ const HeroSection = () => {
   
   const { scrollY } = useScroll();
   
-  // 3D scroll transforms
-  const rotateX = useTransform(scrollY, [0, 400], [0, 15]);
-  const rotateY = useTransform(scrollY, [0, 400], [0, -10]);
-  const scale = useTransform(scrollY, [0, 400], [1, 0.8]);
+  // Scroll transforms
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const textY = useTransform(scrollY, [0, 400], [0, -100]);
   const backgroundY = useTransform(scrollY, [0, 400], [0, 200]);
 
   // Mouse parallax effect for hero section only
