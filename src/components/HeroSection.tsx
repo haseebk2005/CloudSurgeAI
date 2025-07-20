@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
@@ -40,7 +40,7 @@ const HeroSection = () => {
     <section 
       ref={heroRef} 
       id="hero" 
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#] via-purple-600 to-black text-white"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-500 via-purple-600 to-black text-white"
       style={{ perspective: '1000px' }}
     >
       {/* Animated Background Grid */}
