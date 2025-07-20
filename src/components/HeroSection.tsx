@@ -16,14 +16,21 @@ const HeroSection = () => {
   const textY = useTransform(scrollY, [0, 400], [0, -100]);
   const backgroundY = useTransform(scrollY, [0, 400], [0, 200]);
 
-  // Mouse parallax effect
+  // Mouse parallax effect for hero section only
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      const x = (clientX / innerWidth - 0.5) * 20;
-      const y = (clientY / innerHeight - 0.5) * 20;
-      setMousePosition({ x, y });
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        const { clientX, clientY } = e;
+        
+        // Check if mouse is within hero section
+        if (clientX >= rect.left && clientX <= rect.right && 
+            clientY >= rect.top && clientY <= rect.bottom) {
+          const x = ((clientX - rect.left) / rect.width - 0.5) * 30;
+          const y = ((clientY - rect.top) / rect.height - 0.5) * 30;
+          setMousePosition({ x, y });
+        }
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -99,17 +106,22 @@ const HeroSection = () => {
         </div>
         
         {/* Overlaid Title */}
-        <div className="relative z-20 text-center" style={{ perspective: '800px' }}>
+        <div className="relative z-20 text-center" style={{ perspective: '1200px' }}>
           <motion.div 
-            className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-tight text-orange-500"
+            className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-tight text-white/60"
+            style={{
+              transform: `rotateY(${mousePosition.x * 1.2}deg) rotateX(${mousePosition.y * -0.8}deg)`,
+              transformStyle: 'preserve-3d',
+              transition: 'transform 0.1s ease-out'
+            }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
             {/* First Line - VIBE-TO-PROD with cylindrical curve */}
             <div className="block relative mb-4">
-              {['V', 'I', 'B', 'E', '-', 'T', 'O', '-', 'P', 'O', 'D'].map((char, index) => {
-                const totalChars = 11;
+              {['V', 'I', 'B', 'E', '-', 'T', 'O', '-', 'P', 'R', 'O', 'D'].map((char, index) => {
+                const totalChars = 12;
                 const centerIndex = (totalChars - 1) / 2;
                 const distanceFromCenter = index - centerIndex;
                 const rotateY = distanceFromCenter * 12; // Degrees of Y rotation
