@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
@@ -7,6 +7,9 @@ const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const { scrollY } = useScroll();
+  
+  // Hover state for straightening text
+  const [isHovered, setIsHovered] = useState(false);
   
   // Scroll transforms
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -37,7 +40,7 @@ const HeroSection = () => {
     <section 
       ref={heroRef} 
       id="hero" 
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-500 via-purple-600 to-black text-white"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#] via-purple-600 to-black text-white"
       style={{ perspective: '1000px' }}
     >
       {/* Animated Background Grid */}
@@ -61,7 +64,7 @@ const HeroSection = () => {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(80)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-purple-400 rounded-full"
@@ -101,10 +104,15 @@ const HeroSection = () => {
           </motion.div>
         </div>
         
+        {/* Transparent Overlay to Enable Scrolling */}
+        <div className="absolute inset-0 z-10 pointer-events-none" />
+        
         {/* Overlaid Title */}
         <div className="relative z-20 text-center" style={{ perspective: '1200px' }}>
           <motion.div 
-            className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-tight text-white/60"
+            className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-tight text-white/60 cursor-pointer select-none pointer-events-auto"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             style={{
               transform: `rotateY(${mousePosition.x * 1.2}deg) rotateX(${mousePosition.y * -0.8}deg)`,
               transformStyle: 'preserve-3d',
@@ -120,13 +128,13 @@ const HeroSection = () => {
                 const totalChars = 11;
                 const centerIndex = (totalChars - 1) / 2;
                 const distanceFromCenter = index - centerIndex;
-                const rotateY = distanceFromCenter * 15; // Degrees of Y rotation
-                const translateZ = Math.abs(distanceFromCenter) * -10; // Push back sides
+                const rotateY = isHovered ? 0 : distanceFromCenter * 15;
+                const translateZ = isHovered ? 0 : Math.abs(distanceFromCenter) * -10;
                 
                 return (
                   <span
                     key={index}
-                    className="inline-block"
+                    className="inline-block transition-transform duration-300 ease-out"
                     style={{
                       transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
                       transformOrigin: 'center center'
@@ -144,13 +152,13 @@ const HeroSection = () => {
                 const totalChars = 8;
                 const centerIndex = (totalChars - 1) / 2;
                 const distanceFromCenter = index - centerIndex;
-                const rotateY = distanceFromCenter * 10; // Degrees of Y rotation
-                const translateZ = Math.abs(distanceFromCenter) * -12; // Push back sides
+                const rotateY = isHovered ? 0 : distanceFromCenter * 10;
+                const translateZ = isHovered ? 0 : Math.abs(distanceFromCenter) * -12;
                 
                 return (
                   <span
                     key={index}
-                    className="inline-block"
+                    className="inline-block transition-transform duration-300 ease-out"
                     style={{
                       transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
                       transformOrigin: 'center center'

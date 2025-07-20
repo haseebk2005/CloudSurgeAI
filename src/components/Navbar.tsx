@@ -21,7 +21,7 @@ const Navbar = () => {
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled 
           ? 'bg-gradient-to-r from-orange-500/95 via-purple-600/95 to-black/95 backdrop-blur-xl border-b border-purple-400/30 shadow-2xl shadow-purple-500/20' 
-          : 'bg-gradient-to-r from-orange-500/20 via-purple-600/20 to-black/20 backdrop-blur-md border-b border-purple-400/10'
+          : 'bg-white/10 backdrop-blur-md border-b border-purple-400/10'
       }`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
