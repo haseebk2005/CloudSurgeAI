@@ -126,6 +126,7 @@ function Footer() {
 
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
+import VibeToProdServices from './components/VibeToProdServices'
 import { AICanCodeFastSection, WhoWeHelpSection, ServicesSection, HowItWorksSection, TestimonialsSection, CTASection } from './components/Sections'
 
 function App() {
@@ -133,6 +134,7 @@ function App() {
     <div className="min-h-screen bg-black">
       <Navbar />
       <HeroSection />
+      <VibeToProdServices />
       <AICanCodeFastSection />
       <WhoWeHelpSection />
       <ServicesSection />

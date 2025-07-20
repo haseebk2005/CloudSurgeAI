@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import logoImage from '../assets/cloudsurge-logo-orange.png';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/src/assets/cloudsurge-logo-orange.png" 
+              src={logoImage} 
               alt="CloudSurge AI" 
               className="h-10 w-auto filter drop-shadow-lg"
             />

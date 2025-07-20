@@ -116,11 +116,11 @@ const HeroSection = () => {
           >
             {/* First Line - VIBE-TO-PROD with cylindrical curve */}
             <div className="block relative mb-4">
-              {['V', 'I', 'B', 'E', '-', 'T', 'O', '-', 'P', 'R', 'O', 'D'].map((char, index) => {
-                const totalChars = 12;
+              {['V', 'I', 'B', 'E', '-', 'T', 'O', '-', 'P',  'O', 'D'].map((char, index) => {
+                const totalChars = 11;
                 const centerIndex = (totalChars - 1) / 2;
                 const distanceFromCenter = index - centerIndex;
-                const rotateY = distanceFromCenter * 12; // Degrees of Y rotation
+                const rotateY = distanceFromCenter * 15; // Degrees of Y rotation
                 const translateZ = Math.abs(distanceFromCenter) * -10; // Push back sides
                 
                 return (
