@@ -39,7 +39,7 @@ function Footer() {
         {/* Main Tagline */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4">
-            <span className="bg-gradient-to-r from-orange-400 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-600 to-purple-500 bg-clip-text text-transparent">
               Cloud Surge
             </span>
           </h2>

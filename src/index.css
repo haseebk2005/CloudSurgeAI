@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-/* Custom Animations for Modern Navbar */
+/* Custom Animations for Modern Navbar - using scrollbar colors */
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(251, 146, 60, 0.5), 0 0 10px rgba(251, 146, 60, 0.3);
+    box-shadow: 0 0 5px rgba(249, 115, 22, 0.5), 0 0 10px rgba(168, 85, 247, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px rgba(251, 146, 60, 0.8), 0 0 30px rgba(251, 146, 60, 0.4);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.8), 0 0 30px rgba(168, 85, 247, 0.6);
   }
 }
 
@@ -104,14 +104,52 @@
   @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black;
 }
 
-/* Text gradient animations */
+/* Text gradient animations - matching scrollbar colors */
 .text-gradient-animate {
-  background: linear-gradient(-45deg, #f97316, #a855f7, #3b82f6, #f97316);
+  background: linear-gradient(-45deg, #f97316, #a855f7, #f97316, #a855f7);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 3s ease infinite;
+}
+
+/* Primary gradient using scrollbar colors */
+.gradient-primary {
+  background: linear-gradient(45deg, #f97316, #a855f7);
+}
+
+.gradient-primary-hover {
+  background: linear-gradient(45deg, #ea580c, #9333ea);
+}
+
+/* Text gradients using scrollbar colors */
+.text-gradient-primary {
+  background: linear-gradient(45deg, #f97316, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-primary-reverse {
+  background: linear-gradient(225deg, #f97316, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Border gradients using scrollbar colors */
+.border-gradient-primary {
+  border-image: linear-gradient(45deg, #f97316, #a855f7) 1;
+}
+
+/* Glow effects using scrollbar colors */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.glow-primary-hover {
+  box-shadow: 0 0 30px rgba(234, 88, 12, 0.4), 0 0 60px rgba(147, 51, 234, 0.3);
 }
 
 @keyframes gradient-shift {
